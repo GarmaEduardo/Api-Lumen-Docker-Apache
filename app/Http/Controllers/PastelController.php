@@ -127,8 +127,45 @@ class PastelController extends Controller
          }
     }
 
-
-    public function new(){
+    //Modifica la cantidad de pasteles en la base de datos
+    //En la petición se deben enviar 3 parametros, la suma, resta y cantidad; añadir valor 1 a la operacion que se esta realizando, de lo contrario el valor sera 0.
+    ///////Ejemplo/////
+    //suma:1
+    //resta:0
+    //cantidad:4
+    public function modifyQuantity($id, Request $request){
         
+
+        $this->validate($request,[
+            'cantidad' => 'required'
+        ]);
+
+        $pastel = Pastel::find($id);
+        $cantidadPastel = $pastel->cantidad;
+        // return $cantidadPastel;
+        //var_dump($cantidadPastel);
+
+        // $newCantidad = $cantidadPastel + $request->cantidad;
+        // var_dump($newCantidad);
+
+        if($request->sumar == 1){
+            $newCantidad = $cantidadPastel + $request->cantidad;
+            $pastel->cantidad = $newCantidad;
+            $pastel->save();
+            return response()->json([
+                "status" => "ok",
+                "res" => "La cantidad ha sido modificada"
+            ]);
+        
+        } elseif($request->restar == 1){
+            $newCantidad = $cantidadPastel - $request->cantidad;
+            $pastel->cantidad = $newCantidad;
+            $pastel->save();
+            return response()->json([
+                "status" => "ok",
+                "res" => "La cantidad ha sido modificada"
+            ]);
+        }
+
     }
 }

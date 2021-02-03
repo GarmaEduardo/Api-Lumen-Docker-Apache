@@ -22,6 +22,6 @@ $router->get('pasteles', ['as' => 'pasteles', 'uses' => 'PastelController@index'
 $router->post('pasteles', ['as' => 'pasteles', 'uses' => 'PastelController@store']);
 $router->delete('pasteles/{id}', ['as' => 'pasteles/{id}', 'uses' => 'PastelController@delete']);
 $router->put('pasteles/{id}', ['as' => 'pasteles/{id}', 'uses' => 'PastelController@update']);
-$router->get('search', ['as' => 'pasteles', 'uses' => 'PastelController@search']);
-
+$router->get('search', ['as' => 'search', 'uses' => 'PastelController@search']);
+$router->put('count/{id}', ['as' => 'count', 'uses' => 'PastelController@modifyQuantity']);
 

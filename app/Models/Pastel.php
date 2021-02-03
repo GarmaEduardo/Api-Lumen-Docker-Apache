@@ -11,7 +11,8 @@ class Pastel extends Model{
     protected $fillable = [
         'sabor',
         'tamano',
-        'precio'
+        'precio',
+        'cantidad'
     ];
 
     protected $hidden = [
