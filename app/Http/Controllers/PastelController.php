@@ -126,4 +126,9 @@ class PastelController extends Controller
              ]);
          }
     }
+
+
+    public function new(){
+        
+    }
 }
