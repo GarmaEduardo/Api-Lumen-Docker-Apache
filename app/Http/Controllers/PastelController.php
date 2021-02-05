@@ -142,11 +142,7 @@ class PastelController extends Controller
 
         $pastel = Pastel::find($id);
         $cantidadPastel = $pastel->cantidad;
-        // return $cantidadPastel;
-        //var_dump($cantidadPastel);
 
-        // $newCantidad = $cantidadPastel + $request->cantidad;
-        // var_dump($newCantidad);
 
         if($request->sumar == 1){
             $newCantidad = $cantidadPastel + $request->cantidad;
