@@ -18,9 +18,8 @@ $router->get('/', function () use ($router) {
 });
 
 
-
+$router->get('pasteles', ['as' => 'pasteles', 'uses' => 'PastelController@index']);
 $router->group(['middleware' => 'auth'], function() use ($router){
-    $router->get('pasteles', ['as' => 'pasteles', 'uses' => 'PastelController@index']);
     $router->post('pasteles', ['as' => 'pasteles', 'uses' => 'PastelController@store']);
     $router->delete('pasteles/{id}', ['as' => 'pasteles/{id}', 'uses' => 'PastelController@delete']);
     $router->put('pasteles/{id}', ['as' => 'pasteles/{id}', 'uses' => 'PastelController@update']);
