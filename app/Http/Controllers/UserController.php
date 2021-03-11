@@ -46,9 +46,10 @@ class UserController extends Controller
             //Retornar mensaje/objeto Json
             return response()->json([
             "status" => "ok",
+            "id" => $user->id,
             "token" => $user->api_token,
             "res" => "Bienvenido"
-        ]);
+            ]);
 
         }else{
             return response()->json([
@@ -57,5 +58,19 @@ class UserController extends Controller
             ]);
 
         }
+    }
+
+
+    public function logOut($id){
+
+        $user = User::find($id);
+        $user->api_token = "";
+        $user->save();
+
+         //Retornar mensaje/objeto Json
+        return response()->json([
+        "status" => "ok",
+        "res" => "Has cerrado sesión"
+        ]);
     }
 }

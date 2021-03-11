@@ -11,21 +11,26 @@ class PastelController extends Controller
     //Retorna todos los datos o elementos en la tabla "pasteles"
     public function index(Request $request)
     {
+        // $pastel = Pastel::all();
 
+        // if ($pastel != "") {
+            // return response()->json([
+                // "status" => "ok",
+                // "data" => $pastel
+            // ]);
+        // } else {
+            // return response()->json([
+                // "status" => "ok",
+                // "data" => "No hay ningun dato que mostrar"
+            // ]);
+        // }
 
-        $pastel = Pastel::all();
+        return Pastel::all();
+    }
 
-        if ($pastel != "") {
-            return response()->json([
-                "status" => "ok",
-                "data" => $pastel
-            ]);
-        } else {
-            return response()->json([
-                "status" => "ok",
-                "data" => "No hay ningun dato que mostrar"
-            ]);
-        }
+    public function show($id){
+        $find = Pastel::find($id);
+        return $find;
     }
 
 
